@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bathymetry and Storms</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <h1> Bathymetry and Storms</h1>
+
+    <h3>Introduction</h3>
+
+    <p>The relationship between bathymetry and storms is very important. Bathymetry is the topography of the ocean floor. 
+        Storms can be
+        devastating environmentally and economically and understanding where and how different
+        storms occur is vital to mitigate their effects. There is existing research on how storms may
+        impact bathymetry and vice versa but there needs to be more analysis as these
+        relationships are not fully understood. Especially with climate change being such an
+        imminent and current threat, understanding the change and effects of bathymetry on
+        storms is very important. Climate change on its own has increased the frequency and
+        intensity of storms, so it is increasingly interesting to analyze the differences that climate
+        change has made to bathymetry the last years.  </p>
+
+
+    <p>For more information and previous research on the relationship between bathymetry and storms, 
+         you can read this paper on morphological changes of a <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2017JC013708">sandy inlet as a result of storms </a> and read this 
+         paper on <a href="https://iopscience.iop.org/article/10.1088/2515-
+         7620/abc39e/pdf#:~:text=The%20advancing%20surge%2C%20affected%20by,and%20ov
+         erflowing%20rivers%20and%20lakes">Coastal Storm Surge resiliency</a>.</p>
+
+    <h3>Introduction to the Data</h3>
+
+    <p> This analysis uses two datasets. The first is a dataset of hurricanes from . Although the dataset has data from the last few hundred years, 
+        this was restricted to the last 100 years to make analysis more straighforward. This was about 2500 hurricanes. The dataset contained the following
+        variables that were used for analysis:
+    </p>  
+
+        <div class="center">
+        <table class="tg">
+            <thead>
+              <tr>
+                <th class="tg-0lax">Variable Name</th>
+                <th class="tg-0lax">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="tg-0lax">Name</td>
+                <td class="tg-0lax">Name of Storm</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Maximum Wind</td>
+                <td class="tg-0lax">Maximum Wind Speed of Storm</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Date</td>
+                <td class="tg-0lax">Date of Storm</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Location</td>
+                <td class="tg-0lax">Starting Location of Storm</td>
+              </tr>
+              <tr>
+                <td class="tg-0lax">Minimum Pressure</td>
+                <td class="tg-0lax">Minimum Pressure of the Storm</td>
+              </tr>
+              <tr>
+            </tbody>
+            </table>
+        </div>
+        <p>The second dataset that was used was a geographical bathymetric data set from <a href="https://www.naturalearthdata.com/downloads/">Natural Earth</a>. 
+            This dataset contained the nested polygons of the bathymetric boundary lines. 
+        </p>
+
+
+        <h3>Storm Geospatial Distribution</h3>
+
+        <p>This first visualization is an interactive map of the of hurricanes. It provides an overview of the geospatial distribution of 
+            storms including what bathymetric levels they start in. </p>
+    
+                <div class = 'center'>
+                    <iframe src="interactive_map.html" width="100%" height="600px" frameborder="0"></iframe>
+                </div>
+                
+                <p> In this interactive map, you can explore the geospatial distribution of storms and hover over and click each storm point and see information 
+                    including the name, max wind speed and minimum pressure of the storm. 
+                </p>
+        
+        <p>Now, let's take a look at the distribution of storms and their category ranks. From the maximum wind information, each storm
+            was classified into a hurricane category rank, 0 to 5 with 5 being the strongest, according to the Saffir-Simpson Hurricane Wind Scale. 
+        </p>
+        <div class = 'container'>
+            <div class = 'image'>
+                <img src="storm_geo_dist.png" width="100%" height="800px" frameborder="0"></img>
+            </div>
+            <div class = 'text'>
+                <p> This is a map showing the locations and category ranks of the recorded hurricanes in the past hundred years near North America. They 
+                    are generally concentrated closer to the equator. The different category rank storms are somewhat evenly distributed, however, there are 
+                    a greater number of stronger storms that occur in deeper bathymetric levels. 
+                </p>
+            </div>  
+            
+        </div>
+        
+        
+        <h3> Bathymetric Levels and Storm Traits</h3>
+
+        <p>
+            This bar plot displays the storm counts for the different bathymetric values from 0 to 6000 meters. There is a clear spike at the 
+            200 meter bathymetric level, whereas at the greater bathymetric values around 5000-6000 meters, there are very little storms. 
+        </p>
+        
+        <script src='https://d3js.org/d3.v7.min.js'></script>
+        <script src='main.js'></script>
+
+        <p> The following plot explores the impact of bathymetric levels on the strength of storms by looking at the distributions 
+            of maximum wind for storms in each level. The distributions are relatively similar across the bathymetric levels with a median 
+            around 60 mph. The 4000 level stands out for its wider distribution and the 6000 level stands out for its shift up, having a median 
+            over 100 mph. This points to the implication that greater bathymetric levels could cause stronger storms.
+        </p>
+
+        <div class = 'center'>
+            <iframe src="max_wind_dist.html" width="100%" height="550px" frameborder="0"></iframe>
+        </div>
+        
+        <p> In this scatterplot, the amount and strength of the hurricanes is displayed for different months. It is clear that the majority 
+            of the storms occur in the summer months. This holds true for all of the bathmyetric levels. The stronger hurricanes also occur
+            during the summer months. You can use the drop-down menu to display only the storms of the chosen category rank.
+        </p>
+
+        <div class = 'center'>
+            <iframe src="Month.html" width="100%" height="550px" frameborder="0"></iframe>
+        </div>
+
+       
+        <h3>Summary and Future Work</h3>
+
+        <p>
+            The relationship between bathymetry and storms was analyzed in this visualization project. The overall trends
+            exemplified in the graphs were that stronger storms start in lower bathymetric levels, hurricanes are concentrated
+            around the 200m bathymetric level and hurricanes are more prevalent in summer months.
+        </p>
+        <p>
+            In the future, it would be interesting and valuable to extend this analysis to changes in bathymetry over the years and
+            different types of storms. It would also be interesting to compare this analysis to analysis of the impact of land topography 
+            on landborne storms.
+        </p>
+
+        <p>For any questions about this project feel free to email zemlyanker.d@northeastern.edu.
+        </p>
+
+</body>
+</html>
